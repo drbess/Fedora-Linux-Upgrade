@@ -1,0 +1,358 @@
+# Git Ignore for Fedora 41-43 Upgrade Documentation Repository
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.vim/
+*.swp
+*.tmp
+*/.DS_Store
+
+# Build and Compilation
+*.o
+*.a
+*.so
+*.pyc
+__pycache__/
+*.egg-info/
+dist/
+build/
+
+# Package Manager Files
+node_modules/
+.npm
+pip-log.txt
+Pipfile.lock
+
+# Virtual Environments
+venv/
+env/
+ENV/
+.venv
+
+# Temporary Files
+*.tmp
+*.bak
+*.backup
+*~
+.~*
+
+# Log Files
+*.log
+logs/
+*.old
+
+# Sensitive Information
+.env
+.env.local
+.env.*.local
+secrets.txt
+credentials.txt
+passwords.txt
+api_keys.txt
+private_keys/
+*.pem
+*.key
+
+# Backup Files (from editors)
+*.orig
+*.backup
+*~backup
+.swp
+.swo
+
+# OS-Specific
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# Git Metadata
+.git/
+.gitattributes
+
+# Documentation Build Files
+_build/
+*.pdf
+*.epub
+*.mobi
+
+# Website/Web Server Files
+.htaccess
+.htpasswd
+.well-known/
+
+# System Upgrade/Backup Files (user-created, not repo)
+home-backup-*.tar.gz
+etc-backup-*.tar.gz
+root-backup-*.tar.gz
+fedora-system-backup/
+luks-backups/
+/backups/*
+!/backups/.gitkeep
+!/backups/README-backups.md
+
+# DNF/Package Manager Cache (don't commit)
+*.dnf-cache
+*.yum-cache
+/var/cache/dnf/*
+/var/cache/yum/*
+
+# System Files (don't commit)
+/dev/*
+/proc/*
+/sys/*
+/tmp/*
+/run/*
+/var/log/*
+
+# Test Results
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+test-results.txt
+
+# IDE Debug Files
+.debug
+.gdbinit
+.lldbinit
+
+# Ruby/Rails (if used for documentation)
+Gemfile.lock
+.bundle/
+
+# Python (if used for scripts)
+*.pyc
+*.pyo
+dist/
+*.egg-info/
+
+# Node.js (if used for tooling)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Docker (if containerized)
+.dockerignore
+docker-compose.override.yml
+
+# CI/CD (keep for repo, but ignore artifacts)
+.travis.yml
+.circleci/config.yml
+.github/workflows/*.run
+build-logs/
+
+# Archive Files (don't commit pre-created archives)
+*.tar
+*.tar.gz
+*.tar.bz2
+*.zip
+*.rar
+*.7z
+
+# Database Files
+*.db
+*.sqlite
+*.sqlite3
+
+# Local Configuration (user-specific)
+local.conf
+.local/
+user-preferences.txt
+
+# Custom Scripts (user-created locally)
+my-upgrade.sh
+custom-backup.sh
+local-patches/
+
+# Documentation Output (build products)
+*.html
+!Fedora-41-to-43-Upgrade-Documentation.html
+site/
+docs/_build/
+
+# Temporary Merge Markers
+*.orig
+*~
+
+# Large Files (shouldn't be committed)
+*.iso
+*.img
+*.vmdk
+*.vdi
+
+# System State Files
+.bash_history
+.zsh_history
+.sh_history
+.fish_history
+
+# Fedora-Specific Files
+*.rpm
+*.src.rpm
+.koji/
+
+# Git Large File Storage
+.gitattributes
+
+# Platform-Specific
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# Generated Files (during documentation build)
+*.generated
+*.auto
+temp/
+cache/
+
+# Sensitive Information Pattern Matching
+# (Commented out - uncomment if needed)
+# **/secrets/
+# **/passwords/
+# **/tokens/
+# **/credentials/
+
+# File Syncing
+.sync
+.Sync.lck
+Sync.lock
+sync-log.txt
+
+# Crash Dumps
+*.dump
+*.crash
+core.*
+
+# Keep Important Files
+# Use '!' to negate a pattern and force inclusion
+!README.md
+!CHANGELOG.md
+!REQUIREMENTS.md
+!REPOSITORY-SUMMARY.md
+!fedora-upgrade-41-to-43.sh
+!Fedora-41-to-43-Upgrade-Documentation.html
+!LICENSE
+!.gitignore
+!scripts/
+!configs/
+!reference/
+!backups/.gitkeep
+!backups/README-backups.md
+
+# Version Control
+.git
+.gitmodules
+
+# Patch Files
+*.patch
+*.diff
+
+# Notes and TODO (personal, not for repo)
+TODO.txt
+NOTES.txt
+IDEAS.md
+scratch/
+
+# Performance/Profiling
+*.prof
+*.pstats
+*.profile
+
+# Package/Distribution
+*.egg
+*.whl
+MANIFEST
+
+# Compressed Backups (not for repo)
+backup-*.tar.gz
+archive-*.zip
+snapshot-*.tar
+
+# Empty Directories (but keep .gitkeep placeholders)
+# Use .gitkeep files in directories you want tracked but empty
+
+---
+
+## How to Use This .gitignore
+
+1. Place this file in the root of the repository:
+   ```bash
+   cp .gitignore /path/to/fedora-43-upgrade-docs/.gitignore
+   ```
+
+2. Verify it's working:
+   ```bash
+   git check-ignore -v <filename>
+   ```
+
+3. Force add exceptions:
+   ```bash
+   git add -f important-file.txt
+   ```
+
+4. Check what will be ignored:
+   ```bash
+   git status -u
+   ```
+
+## Important Notes
+
+- The main documentation files (README.md, CHANGELOG.md, etc.) are explicitly included with `!` patterns
+- All backup and system files are ignored (users shouldn't commit personal backups)
+- Build artifacts and compiled files are ignored
+- Sensitive information is ignored (credentials, API keys, private keys)
+- IDE/editor files are ignored for cross-platform compatibility
+
+## Customizing for Your Project
+
+If you add new file types to track, remember to:
+1. Update this .gitignore to ignore similar temporary files
+2. Use `!important-file.ext` to force include if needed
+3. Document any special cases in comments
+
+## Troubleshooting
+
+If a file is still being tracked despite .gitignore:
+```bash
+git rm --cached filename.txt
+git commit -m "Remove filename.txt from tracking"
+```
+
+If you want to ignore a previously tracked file:
+```bash
+git rm --cached --force filename.txt
+git add .gitignore
+git commit -m "Add filename.txt to .gitignore"
+```
+
+## Testing the .gitignore
+
+```bash
+# See what will be ignored
+git check-ignore -v *
+
+# Verify all files are properly categorized
+git status
+
+# Before committing to repo
+git status --short
+```
+
+---
+
+*Last Updated: January 18, 2026*
+*Version: 1.0.0*
